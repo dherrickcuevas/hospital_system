@@ -66,15 +66,7 @@
 	.sw-toolbar-bottom{
 		display: none;
 	}
-
-	.sw-toolbar-top{
-		
-	}
-
-	.nav-tabs{
-		margin-bottom: 20px;
-	}
-
+	
 </style>
 </head>
 
