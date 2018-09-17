@@ -1,0 +1,8 @@
+
+//symptom
+[{"symptom_id":"1", "name":"Abdominal Pain"},{"symptom_id":"2", "name":"Constipation"},{ "symptom_id":"3", "name":"Infection"}]
+
+
+//question
+[{"symptom_id":"1","question":"Rate the pain","type":"rate"},{"symptom_id":"1","question":"Last Meal","type":"text"},{"symptom_id":"1","question":"Vomitting/Nauseous","type":"y/n"},{"symptom_id":"1","question":"Acidic","type":"y/n"},
+{"symptom_id":"2","question":"When your symptoms started and how long they’ve been going on?","type":"text"},{"symptom_id":"2","question":"Having pain in your stomach?","type":"y/n"},{"symptom_id":"2","question":"Vomitting/Nauseous","type":"y/n"},{"symptom_id":"2","question":"How much you’ve been eating or drinking?","type":"rate"},{"symptom_id":"2","question":" Have you recently gained or lost weight?","type":"y/n"},{"symptom_id":"2","question":" Have you recently gained or lost weight","type":"y/n"},{"symptom_id":"2","question":"Do you have to strain to poop?","type":"y/n"}]
