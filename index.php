@@ -16,6 +16,7 @@
 			<h6>Hospital & Medical Center</h6>
 			<hr>
 			<p id="login_text">Please enter your credentials</p>
+			<div id="loader" class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
 		</div>
 
 		<form id="login_form" method="POST">
@@ -40,6 +41,8 @@
 <?php include('assets/parts/scripts.php'); ?>
 
 <script type="text/javascript">
+	$("#loader").hide();
+
 	$("#login_form").on("submit", function(e){
 		e.preventDefault();
 
@@ -51,6 +54,8 @@
 			$("input[name='password']").prop("disabled", true);*/
 			$("#login_form").animateCss("fadeOut", function(){
 				$("#login_form").hide();
+				$("#loader").show();
+				$("#login_text").hide();
 			});
 		},200);
 	});

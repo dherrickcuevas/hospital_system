@@ -17,8 +17,9 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/smart_wizard_theme_dots.min.css" />
 	<link rel="stylesheet" type="text/css" href="assets/css/select2.min.css" />
 	<link rel="stylesheet" type="text/css" href="assets/css/jasny-bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="assets/css/datatables.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/datatables.min.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/animate.min.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/loader.css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<style>
