@@ -41,28 +41,24 @@
 							<div class="row">
 								<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
 									<h6>Name</h6>
-									<span id="patient_name">CUEVAS, MARK DHERRICK P.</span>
-								</div>
-
-								<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
-									<h6>Birthdate</h6>
-									<span id="patient_name">July 23, 1997</span>
+									<span id="patient_name"></span>
 								</div>
 
 								<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
 									<h6>Date of Test</h6>
-									<span id="date_of_test">September 20, 2018</span>
+									<span id="date_of_test"><?php echo date("F d, Y h:i A")?></span>
 								</div>
 
-								<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
+								<!-- <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
 									<h6>Requested by</h6>
 									<span id="resquested_by">Dr. J. BUÑAG</span>
-								</div>
+								</div> -->
 							</div>							
 						</div>
 					</div>
 					<!-- Patient Information -->
-
+					<input type="hidden" name="labtest_id">
+					<input type="hidden" name="test_type">
 					<!-- Content -->
 					<div class="row mb-4">
 
@@ -72,24 +68,9 @@
 
 								<div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
 
-									<h6 class="pb-2 border-bottom bottom-gray"><strong>Fecalysis</strong></h6>
-
-									<div class="d-flex">
-										<div style="padding: 5px;">
-											<h6>Color</h6>
-											<h6>Consistency</h6>
-											<h6>Pus</h6>
-											<h6>Red Blood Cell</h6>
-											<h6>Others</h6>
-										</div>
-
-										<div class="ml-auto" style="padding: 5px;">
-											<h6>Yellow</h6>
-											<h6>Soft</h6>
-											<h6>20-25</h6>
-											<h6>0-0.2</h6>
-											<h6>E. Hystolitica cyst 3-5</h6>
-										</div>
+									<h6 class="pb-2 border-bottom bottom-gray" id="test_title"><strong></strong></h6>
+									<div class="row" id="test_body">
+										
 									</div>
 								</div>
 
@@ -101,9 +82,9 @@
 
 									<h6 class="pb-2 border-bottom bottom-gray"><strong>Interpretation</strong></h6>
 
-									<p>
-										The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. 
-									</p>
+									<div class="form-group" id="test_interpretation">
+										<textarea class="form-control" name="interpretation"></textarea>
+									</div>
 
 								</div>
 
@@ -118,6 +99,7 @@
 			</div>
 
 			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="test_submit">Submit</button>
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			</div>
 		</div>
