@@ -9,6 +9,7 @@
 <script type="text/javascript" src="assets/js/pdfmake.min.js"></script>
 <script type="text/javascript" src="assets/js/vfs_fonts.js"></script>
 <script type="text/javascript" src="assets/js/datatables.min.js"></script>
+<script type="text/javascript" src="assets/js/chartjs.min.js"></script>
 
 <script type="text/javascript">
 	$.fn.extend({
@@ -36,5 +37,11 @@
 
 			return this;
 		},
+	});
+
+	$(document).ready(function () {
+		$('#sidebarCollapse').on('click', function () {
+			$('#sidebar').toggleClass('active');
+		});
 	});
 </script>

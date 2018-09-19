@@ -72,6 +72,74 @@
 
 								<div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
 
+									<h6 class="pb-2 border-bottom bottom-gray"><strong>Urinalysis</strong></h6>
+
+									<div class="row">
+
+										<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+											<div class="form-group row">
+												<label class="col-sm-4 col-form-label">Color</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control">
+												</div>
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+											<div class="form-group row">
+												<label class="col-sm-4 col-form-label">Transparency</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control">
+												</div>
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+											<div class="form-group row">
+												<label class="col-sm-4 col-form-label">Hemoglobin</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control">
+												</div>
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+											<div class="form-group row">
+												<label class="col-sm-4 col-form-label">Hematocrit</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control">
+												</div>
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+											<div class="form-group row">
+												<label class="col-sm-4 col-form-label">Red Blood Cells</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control">
+												</div>
+											</div>
+										</div>
+
+										<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+											<div class="form-group row">
+												<label class="col-sm-4 col-form-label">Platelet Count</label>
+												<div class="col-sm-8">
+													<input type="text" class="form-control">
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+							<div class="row mb-4">
+
+								<div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+
 									<h6 class="pb-2 border-bottom bottom-gray"><strong>Fecalysis</strong></h6>
 
 									<div class="d-flex">
