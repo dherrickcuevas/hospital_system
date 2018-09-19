@@ -12,7 +12,7 @@
 			<div class="modal-body">
 				<div class="col-lg-12">
 
-					<table class="table hover" style="width: 100%">
+					<table id="bed_table" class="table hover" style="width: 100%">
 						<thead>
 							<tr>
 								<th width="5%">Bed No.</th>
@@ -23,15 +23,15 @@
 							</tr>
 						</thead>
 
-						<tbody>
+						<tbody id="bed_tbody">
 
 						</tbody>
 
 					</table>
 
-					<h6 class="font-weight-bold text-success">VACANT</h6>
+					<!-- <h6 class="font-weight-bold text-success">VACANT</h6>
 					<h6 class="font-weight-bold text-danger">OCCUPIED</h6>
-					<button class="btn btn-primary btn-sm"><i class="fas fa-check"></i></button>
+					<button class="btn btn-primary btn-sm"><i class="fas fa-check"></i></button> -->
 
 				</div>
 			</div>
