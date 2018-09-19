@@ -1,16 +1,14 @@
 <?php
 include('assets/includes/db_connect.php');
 
-if (isset($_SESSION)) {
-	{
-		if ($_SESSION['role_id'] == "4") {
-			echo '<script>window.location.href="doctor_dashboard.php"</script>';
-		}
+session_start();
 
-		else if ($_SESSION['role_id'] == "5") {
-			echo '<script>window.location.href="patient_dashboard.php"</script>';
-		}
-	}
+if(!isset($_SESSION['user_id']) && empty($_SESSION['user_id'])) {
+	echo '<script>window.location.href="index.php"</script>';
+}
+
+else{
+	
 }
 
 ?>
