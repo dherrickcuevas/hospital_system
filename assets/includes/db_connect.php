@@ -1,8 +1,5 @@
 <?php
-<<<<<<< HEAD
-	$mysqli = mysqli_connect("localhost", "root", "", "hospital_system")
-	or die("Connection failure while checking database");
-=======
+
 require $_SERVER['DOCUMENT_ROOT'].'/hospital_system/vendor/autoload.php';
 date_default_timezone_set('Asia/Manila');
 class Database
@@ -140,17 +137,17 @@ class Database
 			$update = $this->db->fecalysis->updateOne( 
 				['labtest_id' => $data[$c - 1]], 
 				['$set' => 
-					['color' => $data[0], 'consistency' => $data[1],'pus' => $data[2],
-					'rbc' => $data[3],'other' => $data[4],'interpretation' => $data[5],
-					'status' => 'Done','date_completed' => $date_completed]
-				]	
-			);
+				['color' => $data[0], 'consistency' => $data[1],'pus' => $data[2],
+				'rbc' => $data[3],'other' => $data[4],'interpretation' => $data[5],
+				'status' => 'Done','date_completed' => $date_completed]
+			]	
+		);
 			$update = $this->db->lab_test->updateOne( 
 				['_id' => new MongoDB\BSON\ObjectId ($data[$c - 1])], 
 				['$set' => 
-					['status' => "Done",'date_completed' => $date_completed]
-				]
-			);
+				['status' => "Done",'date_completed' => $date_completed]
+			]
+		);
 			//find bed no
 			$lab_test =$this->getLabTest($data[$c - 1]);
 			foreach ($lab_test as $lab) {
@@ -160,9 +157,9 @@ class Database
 					$update = $this->db->bed_list->updateOne( 
 						['bed_no' => $er->bed_no], 
 						['$set' => 
-							['status' => "Vacant"]
-						]
-					);
+						['status' => "Vacant"]
+					]
+				);
 				}
 			}
 			return true;
@@ -171,6 +168,9 @@ class Database
 
 		}
 	}
+	public function loginUser($email, $password){
+		$result = $this->db->users->findOne(array("email" => $email, "salt" => $password));
+		return $result;
+	}
 }
->>>>>>> e9900e351353faf285bb28c90a4cfecc973f8999
 ?>

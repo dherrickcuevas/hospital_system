@@ -1,4 +1,23 @@
-<?php include('assets/parts/header.php'); ?>
+<?php
+include('assets/parts/header.php');
+
+if (!isset($_SESSION)) {
+	session_start();
+}
+
+else{
+	{
+		if ($_SESSION['role_id'] == "4") {
+			echo '<script>window.location.href="doctor_dashboard.php"</script>';
+		}
+
+		else if ($_SESSION['role_id'] == "5") {
+			echo '<script>window.location.href="patient_dashboard.php"</script>';
+		}
+	}
+}
+
+?>
 
 <link rel="stylesheet" type="text/css" href="assets/css/login_style.css">
 
@@ -15,14 +34,36 @@
 			<h1 class="h3 mb-1 font-weight-bold">ALPAX</h1>
 			<h6>Hospital & Medical Center</h6>
 			<hr>
-			<p id="login_text">Please enter your credentials</p>
+			<p id="login_text" class="text-warning font-weight-bold">
+				
+				<?php
+
+				if (isset($_GET['err'])) {
+					$err = $_GET['err'];
+					switch ($err) {
+						case '0':
+						echo "Incorrect parameters passed.";
+						break;
+
+						case '1':
+						echo "Incorrect credentials. Please try again.";
+						break;
+						
+						default:
+						echo "Unknown error. Please try again.";
+						break;
+					}
+				}
+
+				?>
+			</p>
 			<div id="loader" class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
 		</div>
 
-		<form id="login_form" method="POST">
+		<form id="login_form" method="POST" action="assets/includes/users_handler.php">
 			<div class="form-label-group">
-				<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus name="email_address">
-				<label for="inputEmail" class="font-weight-bold">Email Address</label>
+				<input type="email" id="email" class="form-control" placeholder="Email address" required autofocus name="email">
+				<label for="email" class="font-weight-bold" autofocus>Email Address</label>
 			</div>
 
 			<div class="form-label-group">
@@ -30,7 +71,7 @@
 				<label for="inputPassword" class="font-weight-bold">Password</label>
 			</div>
 
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			<button class="btn btn-lg btn-info btn-block" type="submit">Sign in</button>
 		</form>
 
 		<hr>
@@ -44,10 +85,9 @@
 	$("#loader").hide();
 
 	$("#login_form").on("submit", function(e){
-		e.preventDefault();
 
+		$("#login_text").html();
 		var form_data = $(this).serializeArray();
-		console.log(form_data);
 
 		setTimeout(function(){
 			/*$("input[name='email_address']").prop("disabled", true);
@@ -55,7 +95,7 @@
 			$("#login_form").animateCss("fadeOut", function(){
 				$("#login_form").hide();
 				$("#loader").show();
-				$("#login_text").hide();
+				$("#login_text").html("Please wait...");
 			});
 		},200);
 	});

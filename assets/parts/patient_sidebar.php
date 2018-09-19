@@ -43,7 +43,7 @@
 		</li>
 
 		<li>
-			<a href="#" class="text-danger-200">
+			<a href="logout.php" class="text-danger-200">
 				<i class="fas fa-sign-out-alt"></i>
 				Log out
 			</a>

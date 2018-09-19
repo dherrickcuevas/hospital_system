@@ -1,5 +1,18 @@
 <?php
-include('assets/includes/db_connect.php'); 
+include('assets/includes/db_connect.php');
+
+if (isset($_SESSION)) {
+	{
+		if ($_SESSION['role_id'] == "4") {
+			echo '<script>window.location.href="doctor_dashboard.php"</script>';
+		}
+
+		else if ($_SESSION['role_id'] == "5") {
+			echo '<script>window.location.href="patient_dashboard.php"</script>';
+		}
+	}
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,7 +23,7 @@ include('assets/includes/db_connect.php');
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Hospital</title>
+	<title>ALPAX Hospital & Medical Center</title>
 
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="assets/css/color.css" />
@@ -22,6 +35,7 @@ include('assets/includes/db_connect.php');
 	<link rel="stylesheet" type="text/css" href="assets/css/jasny-bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="assets/css/datatables.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<style>
