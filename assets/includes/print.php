@@ -1,19 +1,6 @@
-<?php
-include('assets/includes/db_connect.php'); 
-?>
-<!DOCTYPE html>
 <html>
 <head>
-
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<title>Hospital</title>
-
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="assets/css/color.css" />
+	<meta name="copyright" content="ALPAX Software Solutions" />
 	<link rel="stylesheet" type="text/css" href="assets/css/smart_wizard.css" />
 	<link rel="stylesheet" type="text/css" href="assets/css/smart_wizard_theme_arrows.min.css" />
 	<link rel="stylesheet" type="text/css" href="assets/css/smart_wizard_theme_circles.min.css" />
@@ -79,9 +66,26 @@ include('assets/includes/db_connect.php');
 	p{
 		margin-bottom: 0.5rem;
 	}
-	
-	
 </style>
+
 </head>
 
 <body>
+<div>
+	<?php 
+	if (isset($_POST['print']))
+	{
+		echo $_POST['print'];
+
+		$today = date("m/d/Y H:i:s", time());
+
+		echo "<script type='text/javascript'>";
+		echo "var d = document.getElementById('date-printed');";
+		echo "if (d != null) document.getElementById('date-printed').innerHTML='".$today."';";
+		echo "window.print()";
+		echo "</script>";
+	}
+	?>
+
+</div>
+</body>

@@ -13,7 +13,6 @@
 ;(function ($, window, document, undefined) {
     "use strict";
     // Default options
-
     var defaults = {
         selected: 0, // Initial selected step, 0 = first step
         keyNavigation: true, // Enable/Disable keyboard navigation(left and right keys are used if enabled)
@@ -329,7 +328,7 @@
             this._showStep(si);
             return true;
         },
-        _showStep: function (idx) {
+        _showStep: function (idx,override = false) {
             // If step not found, skip
             if (!this.steps.eq(idx)) {
                 return false;
@@ -340,13 +339,16 @@
             }
             // If it is a disabled step, skip
             if (this.steps.eq(idx).parent('li').hasClass('disabled') || this.steps.eq(idx).parent('li').hasClass('hidden')) {
+
                 return false;
             }
+
             // Load step content
-            this._loadStepContent(idx);
+            this._loadStepContent(idx,override);
             return true;
         },
-        _loadStepContent: function (idx) {
+        _loadStepContent: function (idx,override = false) {
+
             var mi = this;
             // Get current step elements
             var curTab = this.steps.eq(this.current_index);
@@ -360,7 +362,8 @@
             }
 
             // Trigger "leaveStep" event
-            if (this.current_index !== null && this._triggerEvent("leaveStep", [curTab, this.current_index, stepDirection]) === false) {
+            if (this.current_index !== null && this._triggerEvent("leaveStep", [curTab, this.current_index, stepDirection]) === false && override == false) {
+                
                 return false;
             }
 
@@ -548,7 +551,7 @@
                     this.main.toggleClass('sw-loading');
             }
         },
-
+        
         // PUBLIC FUNCTIONS
 
         theme: function (v) {
@@ -566,6 +569,9 @@
         },
         prev: function () {
             this._showPrevious();
+        },
+        goToStep: function (e) {
+            this._showStep(e,true);
         },
         reset: function () {
             // Trigger "beginReset" event
@@ -618,7 +624,7 @@
             }
         }
     });
-
+    
     // Wrapper for the plugin
     $.fn.smartWizard = function (options) {
         var args = arguments;
@@ -644,4 +650,5 @@
             }
         }
     };
+    
 })(jQuery, window, document);

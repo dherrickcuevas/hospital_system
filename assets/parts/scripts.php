@@ -1,7 +1,8 @@
 </body>
 
 <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="assets/js/jquery.smartWizard.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.smartWizard.js"></script>
+<script type="text/javascript" src="assets/js/numeral.min.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="assets/js/popper.min.js"></script>
 <script type="text/javascript" src="assets/js/validator.min.js"></script>
@@ -37,4 +38,5 @@
 			return this;
 		},
 	});
+	
 </script>

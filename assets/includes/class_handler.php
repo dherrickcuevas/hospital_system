@@ -20,7 +20,7 @@ if(isset($_POST['id'])){
 					$response.="<div><label>$question->question</label></div>";
 					$response.="<div class='ml-auto'><span id='$question->_id' class='text-warning' style='font-size: 15px;'>1</span></div>";
 					$response.="</div>";
-					$response.="<input type='range' class='slider' name='$question->_id' onchange='rateChange(\"$question->_id\",this.value)' style='width: 100%' min='1' max='10' value='1'>";
+					$response.="<input type='range' class='slider to-d' name='$question->_id' onchange='rateChange(\"$question->_id\",this.value)' style='width: 100%' min='1' max='10' value='1'>";
 					$response.="<div class='d-flex'><div>1</div><div class='ml-auto'>10</div></div>";
 				}
 				else if($type =='text'){
@@ -32,13 +32,13 @@ if(isset($_POST['id'])){
 					$response.="<div class='row'>";
 					$response.="<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2'>";
 					$response.="<div class='form-check'>";
-					$response.="<input class='form-check-input' type='radio' name='".$question->_id."' id='".$question->_id."' value='yes'>";
+					$response.="<input class='form-check-input to-d' type='radio' name='".$question->_id."' id='".$question->_id."' value='yes'>";
 					$response.="<label class='form-check-label' for='".$question->_id."_y'>Yes</label>";
 					$response.="</div>";
 					$response.="</div>";
 					$response.="<div class='col-lg-2 col-md-2 col-sm-2 col-xs-2'>";
 					$response.="<div class='form-check'>";
-					$response.="<input class='form-check-input' type='radio' name='".$question->_id."' id='".$question->_id."' value='no' checked>";
+					$response.="<input class='form-check-input to-d' type='radio' name='".$question->_id."' id='".$question->_id."' value='no' checked>";
 					$response.="<label class='form-check-label' for='".$question->_id."_n'>No</label>";
 					$response.="</div>";
 					$response.="</div>";
@@ -85,61 +85,91 @@ if(isset($_POST['id'])){
 	else if($id == 6){
 		$type = $_POST['type'];
 		$labtest_id = (string)$_POST['test_id'];
-		$response =[];
+		//check if Done
+		$checker = 0;
+		foreach($db->getLabTest($labtest_id) as $lab){
+			if($lab->status =='Done'){
+				$checker = 1;
+			}
+			else 
+				$checker = 0;
+		}
 		if($type == "Fecalysis"){//fecalysis
-			foreach ($db->getFecalysis($labtest_id) as $test) {
-				$response[0]="<div class='col-lg-12 col-md-12 col-xs-12 col-sm-12'>
-								<div class='form-group row'>
-									<label class='col-sm-4 col-form-label'>Color</label>
-									<div class='col-sm-8'>
-										<input type='text' name='test_value[]' class='form-control'>
-									</div>
-								</div>
-							</div>
-							<div class='col-lg-12 col-md-12 col-xs-12 col-sm-12'>
-								<div class='form-group row'>
-									<label class='col-sm-4 col-form-label'>Consistency</label>
-									<div class='col-sm-8'>
-										<input type='text' name='test_value[]' class='form-control'>
-									</div>
-								</div>
-							</div>
-							<div class='col-lg-12 col-md-12 col-xs-12 col-sm-12'>
-								<div class='form-group row'>
-									<label for='staticEmail' class='col-sm-4 col-form-label'>Pus</label>
-									<div class='col-sm-8'>
-										<input type='text' name='test_value[]' class='form-control'>
-									</div>
-								</div>
-							</div>
-							<div class='col-lg-12 col-md-12 col-xs-12 col-sm-12'>
-								<div class='form-group row'>
-									<label class='col-sm-4 col-form-label'>Red Blood Cells</label>
-									<div class='col-sm-8'>
-										<input type='text' name='test_value[]' class='form-control'>
-									</div>
-								</div>
-							</div>
-							<div class='col-lg-12 col-md-12 col-xs-12 col-sm-12'>
-								<div class='form-group row'>
-									<label class='col-sm-4 col-form-label'>Others</label>
-									<div class='col-sm-8'>
-										<input type='text' name='test_value[]' class='form-control'>
-									</div>
-								</div>
-							</div>
-								";
-				
-				$response[1] = $test->interpretation;
+			if($checker == 1){
+				foreach ( $db->getFecalysis($labtest_id) as $fec) {
+					$response =
+					[
+						"Color", $fec->color,
+						"Consistency" ,$fec->consistency,
+						"Pus" ,$fec->pus,
+						"Red Blood Cell" , $fec->rbc,
+						"Others" , $fec->other,
+						"interpretation", $fec->interpretation
+					];
+				}
+			}
+			else{
+				$response = ["Color","Consistency","Pus","Red Blood Cell","Others"];
 			}
 		}
-		else if($type == 2){//urinalysis
-
+		else if($type == "Urinalysis"){//urinalysis
+			if($checker == 1){
+				foreach ( $db->getUrinalysis($labtest_id) as $uri) {
+					$response =
+					[
+						"Color" , $uri->color,
+						"Transparency" ,$uri->transparency,
+						"Hemoglobin" , $uri->hemoglobin,
+						"Hematocrit" , $uri->hematocrit,
+						"White Blood Cell" , $uri->wbc,
+						"Red Blood Cell" , $uri->rbc,
+						"Pus", $uri->pus,
+						"Platelet Count" , $uri->platelet_count,
+						"interpretation", $uri->interpretation
+					];
+				}
+			}
+			else
+				$response = ["Color","Transparency","Hemoglobin","Hematocrit","White Blood Cell","Red Blood Cell","Platelet Count","Pus"];
 		}
-		echo json_encode($response);
+		echo json_encode(array($checker,$response));
 	}
 	else if($id == 7){
 		echo json_encode($db->insert_two($_POST['test_value']));
+	}
+	else if($id == 8){// get er + patient info for billing
+
+		$lab_test1 = [];
+		foreach($db->getPatientER($_POST['patient_oid']) as $res){
+			$patient_name = $res->lname.", ".$res->fname." ".$res->mname;
+			$patient_address = $res->address;
+			$admission_date = "";
+			$discharge_date = date("F d, Y h:i A");
+			$bed_no = "";
+			$ward_no = "";
+			foreach($res->er_transaction as $er){
+				$assessment_date = $er->assessment_date;
+				if(isset($er->admission_date) && isset($er->bed_no) && isset($er->ward_no)){
+					$admission_date = $er->admission_date;
+					$bed_no = $er->bed_no;
+					$ward_no = $er->ward_no;
+				}
+				$emergency_code = $er->emergency_code;
+				if($er->wlt == 0){
+					foreach($db->getLabTestByPatient($_POST['patient_oid']) as $lab_test){
+						foreach ($lab_test->test_list as $lab) {
+							$lab_test1[] = [$lab->name,$lab->price];
+						}
+						
+					}
+				}
+			}
+			echo json_encode(array($patient_name,$patient_address,$assessment_date,$admission_date,$discharge_date,$bed_no,$ward_no,$emergency_code,$lab_test1));
+		}
+	}
+	else if($id == 9){// insert bill
+		echo $db->bill($_POST);
+
 	}
 }
 
