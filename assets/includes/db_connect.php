@@ -172,5 +172,18 @@ class Database
 		$result = $this->db->users->findOne(array("email" => $email, "salt" => $password));
 		return $result;
 	}
+	/*public function getPatients(){
+		return $this->db->users->aggregate(
+			[
+				[
+					$lookup =>
+					[
+						"from" => "users_information",
+						"localField" => ""
+					]
+				]
+			]
+		);
+	}*/
 }
 ?>

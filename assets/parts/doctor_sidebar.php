@@ -1,12 +1,12 @@
 <!-- Sidebar  -->
-<nav id="sidebar" class="active ">
+<nav id="sidebar" class="active">
 	<div class="sidebar-header">
 		<h3>ALPAX | Hospital and Medical Center</h3>
 		<strong><img src="assets/img/icons/pharmacy.svg" style="height: 30px; width: 100%"></strong>
 	</div>
 
 	<ul class="list-unstyled components">
-		<li class="active">
+		<li class="">
 			<a href="doctor_dashboard.php">
 				<i class="fas fa-home"></i>
 				Dashboard

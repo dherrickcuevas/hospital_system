@@ -1,7 +1,7 @@
 <?php
 include('assets/includes/db_connect.php');
 
-session_start();
+/*session_start();
 
 if(!isset($_SESSION['user_id']) && empty($_SESSION['user_id'])) {
 	echo '<script>window.location.href="index.php"</script>';
@@ -9,7 +9,7 @@ if(!isset($_SESSION['user_id']) && empty($_SESSION['user_id'])) {
 
 else{
 	
-}
+}*/
 
 ?>
 <!DOCTYPE html>

@@ -27,7 +27,7 @@
 			</div>
 
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-				<table class="table" style="width: 100%">
+				<table id="patientTable" class="table" style="width: 100%">
 					<thead>
 						<tr>
 							<th>Full Name</th>
@@ -56,5 +56,30 @@
 <?php include('assets/modals/m_patient_profile.php'); ?>
 
 <script type="text/javascript">
-	$(".table").DataTable();
+	$(document).ready(function(){
+
+		$.ajax({
+			type: "POST",
+			url: "assets/includes/patientHandler.php",
+			dataType: 'json',
+			success: function( obj, textStatus ){
+
+				$("#patientTable").DataTable({
+					data: obj,
+					columns:[
+						{
+							data: 
+						}
+					]
+				});
+
+			},
+			error: function( obj, textStatus ){
+				alert('Error! Failed to get patients.');
+			}
+		});
+
+	});
+
+	
 </script>
