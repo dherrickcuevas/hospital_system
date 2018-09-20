@@ -210,11 +210,11 @@
                     toolbarBottom.append(btnGroup.clone(true));
 
                     if (btnGroupExtra !== null) {
-                        if (this.options.toolbarSettings.toolbarButtonPosition === 'start') {
-                            toolbarBottom.prepend(btnGroupExtra.clone(true));
-                        } else {
-                            toolbarBottom.append(btnGroupExtra.clone(true));
-                        }
+                      if (this.options.toolbarSettings.toolbarButtonPosition === 'start') {
+                          toolbarBottom.prepend(btnGroupExtra.clone(true));
+                      } else {
+                          toolbarBottom.append(btnGroupExtra.clone(true));
+                      }
                     }
                     this.container.after(toolbarBottom);
                     break;
@@ -329,7 +329,7 @@
             this._showStep(si);
             return true;
         },
-        _showStep: function (idx) {
+        _showStep: function (idx,override = false) {
             // If step not found, skip
             if (!this.steps.eq(idx)) {
                 return false;
@@ -343,10 +343,10 @@
                 return false;
             }
             // Load step content
-            this._loadStepContent(idx);
+            this._loadStepContent(idx,override);
             return true;
         },
-        _loadStepContent: function (idx) {
+        _loadStepContent: function (idx,override = false) {
             var mi = this;
             // Get current step elements
             var curTab = this.steps.eq(this.current_index);
@@ -360,7 +360,7 @@
             }
 
             // Trigger "leaveStep" event
-            if (this.current_index !== null && this._triggerEvent("leaveStep", [curTab, this.current_index, stepDirection]) === false) {
+            if (this.current_index !== null && this._triggerEvent("leaveStep", [curTab, this.current_index, stepDirection]) === false && override == false) {
                 return false;
             }
 
@@ -587,6 +587,9 @@
 
             // Trigger "endReset" event
             this._triggerEvent("endReset");
+        },
+        goToStep: function (e) {
+            this._showStep(e,true);
         },
         stepState: function (stepArray, state) {
             var mi = this;
